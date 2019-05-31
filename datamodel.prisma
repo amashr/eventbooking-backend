@@ -5,3 +5,13 @@ type User {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
+
+type Event {
+  id: ID! @id
+  title: String! @unique
+  description: String!
+  image: String!
+  price: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
