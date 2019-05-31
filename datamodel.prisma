@@ -11,7 +11,7 @@ type Event {
   title: String! @unique
   description: String!
   image: String!
-  price: String!
+  price: Int!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }

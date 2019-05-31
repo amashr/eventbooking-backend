@@ -230,20 +230,14 @@ export interface EventWhereInput {
   image_not_starts_with?: String;
   image_ends_with?: String;
   image_not_ends_with?: String;
-  price?: String;
-  price_not?: String;
-  price_in?: String[] | String;
-  price_not_in?: String[] | String;
-  price_lt?: String;
-  price_lte?: String;
-  price_gt?: String;
-  price_gte?: String;
-  price_contains?: String;
-  price_not_contains?: String;
-  price_starts_with?: String;
-  price_not_starts_with?: String;
-  price_ends_with?: String;
-  price_not_ends_with?: String;
+  price?: Int;
+  price_not?: Int;
+  price_in?: Int[] | Int;
+  price_not_in?: Int[] | Int;
+  price_lt?: Int;
+  price_lte?: Int;
+  price_gt?: Int;
+  price_gte?: Int;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -339,21 +333,21 @@ export interface EventCreateInput {
   title: String;
   description: String;
   image: String;
-  price: String;
+  price: Int;
 }
 
 export interface EventUpdateInput {
   title?: String;
   description?: String;
   image?: String;
-  price?: String;
+  price?: Int;
 }
 
 export interface EventUpdateManyMutationInput {
   title?: String;
   description?: String;
   image?: String;
-  price?: String;
+  price?: Int;
 }
 
 export interface UserCreateInput {
@@ -403,7 +397,7 @@ export interface Event {
   title: String;
   description: String;
   image: String;
-  price: String;
+  price: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -413,7 +407,7 @@ export interface EventPromise extends Promise<Event>, Fragmentable {
   title: () => Promise<String>;
   description: () => Promise<String>;
   image: () => Promise<String>;
-  price: () => Promise<String>;
+  price: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -425,7 +419,7 @@ export interface EventSubscription
   title: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
-  price: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -633,7 +627,7 @@ export interface EventPreviousValues {
   title: String;
   description: String;
   image: String;
-  price: String;
+  price: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -645,7 +639,7 @@ export interface EventPreviousValuesPromise
   title: () => Promise<String>;
   description: () => Promise<String>;
   image: () => Promise<String>;
-  price: () => Promise<String>;
+  price: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -657,7 +651,7 @@ export interface EventPreviousValuesSubscription
   title: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
-  price: () => Promise<AsyncIterator<String>>;
+  price: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -727,6 +721,11 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
+
+/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -735,11 +734,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
