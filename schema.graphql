@@ -1,7 +1,14 @@
+# import * from './generated/graphql-schema/prisma.graphql'
+
 type Query {
-  test: String
+  events: [Event]!
 }
 
 type Mutation {
-  test: String
+  createEvent(
+    title: String
+    description: String
+    image: String
+    price: String
+  ): Event!
 }
