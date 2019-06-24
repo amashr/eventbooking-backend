@@ -19,6 +19,8 @@ const server = new GraphQLServer({
   }
 });
 
+server.express.use(cookieParser());
+
 server.start(
   {
     cors: {
