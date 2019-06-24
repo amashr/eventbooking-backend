@@ -161,6 +161,12 @@ export type UserOrderByInput =
   | "name_DESC"
   | "email_ASC"
   | "email_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "resetToken_ASC"
+  | "resetToken_DESC"
+  | "resetTokenExpiry_ASC"
+  | "resetTokenExpiry_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -307,6 +313,48 @@ export interface UserWhereInput {
   email_not_starts_with?: String;
   email_ends_with?: String;
   email_not_ends_with?: String;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
+  resetToken?: String;
+  resetToken_not?: String;
+  resetToken_in?: String[] | String;
+  resetToken_not_in?: String[] | String;
+  resetToken_lt?: String;
+  resetToken_lte?: String;
+  resetToken_gt?: String;
+  resetToken_gte?: String;
+  resetToken_contains?: String;
+  resetToken_not_contains?: String;
+  resetToken_starts_with?: String;
+  resetToken_not_starts_with?: String;
+  resetToken_ends_with?: String;
+  resetToken_not_ends_with?: String;
+  resetTokenExpiry?: String;
+  resetTokenExpiry_not?: String;
+  resetTokenExpiry_in?: String[] | String;
+  resetTokenExpiry_not_in?: String[] | String;
+  resetTokenExpiry_lt?: String;
+  resetTokenExpiry_lte?: String;
+  resetTokenExpiry_gt?: String;
+  resetTokenExpiry_gte?: String;
+  resetTokenExpiry_contains?: String;
+  resetTokenExpiry_not_contains?: String;
+  resetTokenExpiry_starts_with?: String;
+  resetTokenExpiry_not_starts_with?: String;
+  resetTokenExpiry_ends_with?: String;
+  resetTokenExpiry_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -354,16 +402,25 @@ export interface UserCreateInput {
   id?: ID_Input;
   name: String;
   email: String;
+  password: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
 }
 
 export interface UserUpdateInput {
   name?: String;
   email?: String;
+  password?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
 }
 
 export interface UserUpdateManyMutationInput {
   name?: String;
   email?: String;
+  password?: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
 }
 
 export interface EventSubscriptionWhereInput {
@@ -505,6 +562,9 @@ export interface User {
   id: ID_Output;
   name: String;
   email: String;
+  password: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -513,6 +573,9 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   email: () => Promise<String>;
+  password: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -523,6 +586,9 @@ export interface UserSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -685,6 +751,9 @@ export interface UserPreviousValues {
   id: ID_Output;
   name: String;
   email: String;
+  password: String;
+  resetToken?: String;
+  resetTokenExpiry?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -695,6 +764,9 @@ export interface UserPreviousValuesPromise
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   email: () => Promise<String>;
+  password: () => Promise<String>;
+  resetToken: () => Promise<String>;
+  resetTokenExpiry: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -705,6 +777,9 @@ export interface UserPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
