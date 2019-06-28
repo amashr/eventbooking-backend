@@ -14,9 +14,7 @@ const server = new GraphQLServer({
   resolverValidationOptions: {
     requireResolversForResolveType: false
   },
-  context: {
-    prisma
-  }
+  context: req => ({ ...req, prisma })
 });
 
 server.express.use(cookieParser());

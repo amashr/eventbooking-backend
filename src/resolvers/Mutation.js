@@ -23,10 +23,10 @@ const Mutation = {
     // Create jwt token
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     // jwt token as cookie on response
-    // ctx.response.cookie('token', token, {
-    //   httpOnly: true,
-    //   maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
-    // });
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365
+    });
     return user;
   }
 };
