@@ -2,6 +2,7 @@
 
 type Query {
   events: [Event]!
+  user: User
 }
 
 type Mutation {
