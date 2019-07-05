@@ -6,9 +6,7 @@ const Query = {
   async user(root, args, ctx) {
     // Check if there is current User
     if (ctx.request.userId) {
-      const user = await ctx.prisma.user({
-        where: { id: ctx.request.userId }
-      });
+      const user = await ctx.prisma.user({ id: ctx.request.userId });
       return user;
     }
     return null;
