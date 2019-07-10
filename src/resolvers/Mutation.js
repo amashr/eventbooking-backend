@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 
+const { transport, makeNiceEmail } = require('../mail');
+
 const Mutation = {
   async createEvent(root, args, ctx) {
     const event = await ctx.prisma.createEvent({
@@ -72,6 +74,17 @@ const Mutation = {
       where: { email },
       data: { resetToken, resetTokenExpiry }
     });
+
+    const mailRes = await transport.sendMail({
+      from: 'event@eventbooking.com',
+      to: user.email,
+      html: makeNiceEmail(
+        `Your password reset token is here! \n \n <a href="${
+          process.env.FRONTEND_URL
+        }/reset?resetToken=${resetToken}">Click here to reset</a>`
+      )
+    });
+
     return { message: 'Thanks' };
   },
   async resetPassword(root, args, ctx) {
