@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { randomBytes } = require('crypto');
+const { promisify } = require('util');
 
 const Mutation = {
   async createEvent(root, args, ctx) {
@@ -51,7 +53,27 @@ const Mutation = {
   },
   signout(root, args, ctx) {
     ctx.response.clearCookie('token');
-    return { message: 'Sigout!!!' };
+    return { message: 'Signout!!!' };
+  },
+  async requestReset(root, args, ctx) {
+    const { email } = args;
+
+    const user = await ctx.prisma.user({ email });
+
+    if (!user) {
+      throw new Error(`No such user found for email ${email}`);
+    }
+
+    const randomBytesPromisified = promisify(randomBytes);
+    const resetToken = (await randomBytesPromisified(20)).toString('hex');
+    const resetTokenExpiry = Date.now() + 3600000; // 1 hour
+
+    const res = await ctx.prisma.updateUser({
+      where: { email },
+      data: { resetToken, resetTokenExpiry }
+    });
+    console.log(res);
+    return { message: 'Thanks' };
   }
 };
 

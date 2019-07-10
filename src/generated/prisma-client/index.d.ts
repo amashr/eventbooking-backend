@@ -166,11 +166,7 @@ export type UserOrderByInput =
   | "resetToken_ASC"
   | "resetToken_DESC"
   | "resetTokenExpiry_ASC"
-  | "resetTokenExpiry_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "resetTokenExpiry_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -341,36 +337,14 @@ export interface UserWhereInput {
   resetToken_not_starts_with?: String;
   resetToken_ends_with?: String;
   resetToken_not_ends_with?: String;
-  resetTokenExpiry?: String;
-  resetTokenExpiry_not?: String;
-  resetTokenExpiry_in?: String[] | String;
-  resetTokenExpiry_not_in?: String[] | String;
-  resetTokenExpiry_lt?: String;
-  resetTokenExpiry_lte?: String;
-  resetTokenExpiry_gt?: String;
-  resetTokenExpiry_gte?: String;
-  resetTokenExpiry_contains?: String;
-  resetTokenExpiry_not_contains?: String;
-  resetTokenExpiry_starts_with?: String;
-  resetTokenExpiry_not_starts_with?: String;
-  resetTokenExpiry_ends_with?: String;
-  resetTokenExpiry_not_ends_with?: String;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
+  resetTokenExpiry?: Float;
+  resetTokenExpiry_not?: Float;
+  resetTokenExpiry_in?: Float[] | Float;
+  resetTokenExpiry_not_in?: Float[] | Float;
+  resetTokenExpiry_lt?: Float;
+  resetTokenExpiry_lte?: Float;
+  resetTokenExpiry_gt?: Float;
+  resetTokenExpiry_gte?: Float;
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -404,7 +378,7 @@ export interface UserCreateInput {
   email: String;
   password: String;
   resetToken?: String;
-  resetTokenExpiry?: String;
+  resetTokenExpiry?: Float;
 }
 
 export interface UserUpdateInput {
@@ -412,7 +386,7 @@ export interface UserUpdateInput {
   email?: String;
   password?: String;
   resetToken?: String;
-  resetTokenExpiry?: String;
+  resetTokenExpiry?: Float;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -420,7 +394,7 @@ export interface UserUpdateManyMutationInput {
   email?: String;
   password?: String;
   resetToken?: String;
-  resetTokenExpiry?: String;
+  resetTokenExpiry?: Float;
 }
 
 export interface EventSubscriptionWhereInput {
@@ -564,9 +538,7 @@ export interface User {
   email: String;
   password: String;
   resetToken?: String;
-  resetTokenExpiry?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
+  resetTokenExpiry?: Float;
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
@@ -575,9 +547,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   email: () => Promise<String>;
   password: () => Promise<String>;
   resetToken: () => Promise<String>;
-  resetTokenExpiry: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  resetTokenExpiry: () => Promise<Float>;
 }
 
 export interface UserSubscription
@@ -588,9 +558,7 @@ export interface UserSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   resetToken: () => Promise<AsyncIterator<String>>;
-  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
 }
 
 export interface UserConnection {
@@ -753,9 +721,7 @@ export interface UserPreviousValues {
   email: String;
   password: String;
   resetToken?: String;
-  resetTokenExpiry?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
+  resetTokenExpiry?: Float;
 }
 
 export interface UserPreviousValuesPromise
@@ -766,9 +732,7 @@ export interface UserPreviousValuesPromise
   email: () => Promise<String>;
   password: () => Promise<String>;
   resetToken: () => Promise<String>;
-  resetTokenExpiry: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+  resetTokenExpiry: () => Promise<Float>;
 }
 
 export interface UserPreviousValuesSubscription
@@ -779,9 +743,7 @@ export interface UserPreviousValuesSubscription
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   resetToken: () => Promise<AsyncIterator<String>>;
-  resetTokenExpiry: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  resetTokenExpiry: () => Promise<AsyncIterator<Float>>;
 }
 
 /*
@@ -814,6 +776,11 @@ export type DateTimeOutput = string;
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
 
 export type Long = string;
 

@@ -251,9 +251,7 @@ type User {
   email: String!
   password: String!
   resetToken: String
-  resetTokenExpiry: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  resetTokenExpiry: Float
 }
 
 type UserConnection {
@@ -268,7 +266,7 @@ input UserCreateInput {
   email: String!
   password: String!
   resetToken: String
-  resetTokenExpiry: String
+  resetTokenExpiry: Float
 }
 
 type UserEdge {
@@ -289,10 +287,6 @@ enum UserOrderByInput {
   resetToken_DESC
   resetTokenExpiry_ASC
   resetTokenExpiry_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type UserPreviousValues {
@@ -301,9 +295,7 @@ type UserPreviousValues {
   email: String!
   password: String!
   resetToken: String
-  resetTokenExpiry: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  resetTokenExpiry: Float
 }
 
 type UserSubscriptionPayload {
@@ -329,7 +321,7 @@ input UserUpdateInput {
   email: String
   password: String
   resetToken: String
-  resetTokenExpiry: String
+  resetTokenExpiry: Float
 }
 
 input UserUpdateManyMutationInput {
@@ -337,7 +329,7 @@ input UserUpdateManyMutationInput {
   email: String
   password: String
   resetToken: String
-  resetTokenExpiry: String
+  resetTokenExpiry: Float
 }
 
 input UserWhereInput {
@@ -411,36 +403,14 @@ input UserWhereInput {
   resetToken_not_starts_with: String
   resetToken_ends_with: String
   resetToken_not_ends_with: String
-  resetTokenExpiry: String
-  resetTokenExpiry_not: String
-  resetTokenExpiry_in: [String!]
-  resetTokenExpiry_not_in: [String!]
-  resetTokenExpiry_lt: String
-  resetTokenExpiry_lte: String
-  resetTokenExpiry_gt: String
-  resetTokenExpiry_gte: String
-  resetTokenExpiry_contains: String
-  resetTokenExpiry_not_contains: String
-  resetTokenExpiry_starts_with: String
-  resetTokenExpiry_not_starts_with: String
-  resetTokenExpiry_ends_with: String
-  resetTokenExpiry_not_ends_with: String
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  resetTokenExpiry: Float
+  resetTokenExpiry_not: Float
+  resetTokenExpiry_in: [Float!]
+  resetTokenExpiry_not_in: [Float!]
+  resetTokenExpiry_lt: Float
+  resetTokenExpiry_lte: Float
+  resetTokenExpiry_gt: Float
+  resetTokenExpiry_gte: Float
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

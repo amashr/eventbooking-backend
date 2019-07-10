@@ -4,9 +4,7 @@ type User {
   email: String! @unique
   password: String!
   resetToken: String
-  resetTokenExpiry: String
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
+  resetTokenExpiry: Float
 }
 
 type Event {
