@@ -1,7 +1,12 @@
 # import * from './generated/prisma.graphql'
 
+type SucessMessage {
+  message: String
+}
+
 type Query {
   events: [Event]!
+  user: User
 }
 
 type Mutation {
@@ -11,4 +16,19 @@ type Mutation {
     image: String!
     price: Int!
   ): Event!
+  signup(email: String!, password: String!, name: String!): User!
+  signin(email: String!, password: String!): User!
+  signout: SucessMessage
+  requestReset(email: String!): SucessMessage
+  resetPassword(
+    resetToken: String!
+    password: String!
+    confirmPassword: String!
+  ): User!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
 }
